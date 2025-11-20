@@ -3,12 +3,11 @@ package com.example.todo_list.Controller;
 import com.example.todo_list.Model.TodoItem;
 import com.example.todo_list.Service.TodoItemService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.Optional;
+import java.util.UUID;
 
 @RestController
 @RequestMapping("todoItem")
@@ -26,5 +25,20 @@ public class TodoItemController implements GenericController {
         service.save(todoItem);
         URI location = generateHeaderLocation(todoItem.getId());
         return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("{id}")
+    public ResponseEntity<TodoItem> findById(@PathVariable("id") String id){
+        UUID uuid = UUID.fromString(id);
+        TodoItem todoItem = service.searchById(uuid);
+        return ResponseEntity.ok(todoItem);
+    }
+
+    @PutMapping("{id}")
+    public ResponseEntity<Void> update (@PathVariable("id") String id, @RequestBody TodoItem todoItem){
+
+        UUID uuid = UUID.fromString(id);
+        service.update(uuid, todoItem);
+        return ResponseEntity.ok().build();
     }
 }
