@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: Todo List
+  datasource:
+    url: jdbc:postgresql://localhost:5433/todolistDB
+    username: todolist
+    password: todolist
+    driver-class-name: org.postgresql.Driver
