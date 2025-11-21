@@ -41,4 +41,11 @@ public class TodoItemController implements GenericController {
         service.update(uuid, todoItem);
         return ResponseEntity.ok().build();
     }
+
+    @DeleteMapping("{id}")
+    public ResponseEntity<Void> delete (@PathVariable("id") String id){
+        UUID uuid = UUID.fromString(id);
+        service.deleteById(uuid);
+        return ResponseEntity.noContent().build();
+    }
 }

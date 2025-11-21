@@ -43,4 +43,8 @@ public class TodoItemService {
             todoItemRepository.save(todoItemUpdated);
         }
     }
+
+    public void deleteById(UUID id){
+        todoItemRepository.deleteById(id);
+    }
 }
