@@ -20,6 +20,7 @@ public class TodoItemController implements GenericController {
         this.service = service;
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping
     public ResponseEntity<Void> save (@RequestBody TodoItem todoItem){
         service.save(todoItem);
@@ -27,6 +28,7 @@ public class TodoItemController implements GenericController {
         return ResponseEntity.created(location).build();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("{id}")
     public ResponseEntity<TodoItem> findById(@PathVariable("id") String id){
         UUID uuid = UUID.fromString(id);
@@ -34,6 +36,7 @@ public class TodoItemController implements GenericController {
         return ResponseEntity.ok(todoItem);
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PutMapping("{id}")
     public ResponseEntity<Void> update (@PathVariable("id") String id, @RequestBody TodoItem todoItem){
 
@@ -42,6 +45,7 @@ public class TodoItemController implements GenericController {
         return ResponseEntity.ok().build();
     }
 
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
     @DeleteMapping("{id}")
     public ResponseEntity<Void> delete (@PathVariable("id") String id){
         UUID uuid = UUID.fromString(id);
