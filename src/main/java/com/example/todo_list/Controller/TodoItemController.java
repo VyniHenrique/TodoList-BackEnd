@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -34,6 +35,13 @@ public class TodoItemController implements GenericController {
         UUID uuid = UUID.fromString(id);
         TodoItem todoItem = service.searchById(uuid);
         return ResponseEntity.ok(todoItem);
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @GetMapping("/todoItemList")
+    public  ResponseEntity<List<TodoItem>> findAllTodoItem(){
+        List<TodoItem> todoItemList = service.findAllTodoItem();
+        return ResponseEntity.ok(todoItemList);
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")

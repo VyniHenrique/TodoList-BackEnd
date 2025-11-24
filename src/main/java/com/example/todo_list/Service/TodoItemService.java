@@ -4,6 +4,7 @@ import com.example.todo_list.Model.TodoItem;
 import com.example.todo_list.Repository.TodoItemRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -46,5 +47,9 @@ public class TodoItemService {
 
     public void deleteById(UUID id){
         todoItemRepository.deleteById(id);
+    }
+
+    public List<TodoItem> findAllTodoItem(){
+        return todoItemRepository.findAll();
     }
 }
