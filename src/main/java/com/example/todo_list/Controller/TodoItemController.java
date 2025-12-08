@@ -38,7 +38,7 @@ public class TodoItemController implements GenericController {
     }
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
-    @GetMapping("/todoItemList")
+    @GetMapping("/")
     public  ResponseEntity<List<TodoItem>> findAllTodoItem(){
         List<TodoItem> todoItemList = service.findAllTodoItem();
         return ResponseEntity.ok(todoItemList);

@@ -21,14 +21,8 @@ public class TodoItemService {
     }
 
     public TodoItem searchById(UUID id){
-
         Optional<TodoItem> optionalTodoItem = todoItemRepository.findById(id);
-        if (optionalTodoItem.isPresent()){
-            TodoItem todoItem = optionalTodoItem.get();
-            todoItemRepository.save(todoItem);
-            return todoItem;
-        }
-        return null;
+        return optionalTodoItem.orElse(null);
     }
 
     public void update(UUID id, TodoItem todoItem){
